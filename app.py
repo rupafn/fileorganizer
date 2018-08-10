@@ -1,7 +1,6 @@
 #OS module in Python provides a way of using operating system dependent functionality.
-#walk yeild two list for each directory it visits, splitting into files and dirs
+
 import sys
-from os import walk
 import os
 
 def organize(dirpath, name, filefolder):
