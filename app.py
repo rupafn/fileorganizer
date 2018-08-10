@@ -18,19 +18,22 @@ def organize(dirpath, name, filefolder):
 def runOrganizer(path):
 
     mypath = path
-    files = [f for f in os.listdir(path) if os.path.isfile(f)]
+    files = [f for f in os.listdir(mypath) if os.path.isfile(mypath+'/'+f)]
     for name in files:
-        str = name.split('.')
-        arrlen = len(str)
-        filefolder = str[arrlen-1]
-        pathexist = os.path.exists(mypath+'/'+filefolder)
-        if not pathexist:
-            newpath = mypath + '/' + filefolder
-            os.mkdir(newpath)
-            organize(mypath,name,filefolder)
+        try:
+            str = name.split('.')
+            arrlen = len(str)
+            filefolder = str[arrlen-1]
+            pathexist = os.path.exists(mypath+'/'+filefolder)
+            if not pathexist:
+                newpath = mypath + '/' + filefolder
+                os.mkdir(newpath)
+                organize(mypath,name,filefolder)
 
-        else:
-            organize(mypath,name,filefolder)
+            else:
+                organize(mypath,name,filefolder)
+        except:
+            print("Cannot create folder for this file: ", name)
 
 
 
